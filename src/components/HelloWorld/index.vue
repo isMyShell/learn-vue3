@@ -10,6 +10,10 @@
       {{ loading ? "loading..." : list }}
     </div>
     <el-button @click="changeHomeDataFromChild">changeHomeData</el-button>
+
+    <ul id="ul">
+      <li v-for="item in 10" :key="item">{{ item }}</li>
+    </ul>
   </div>
 </template>
 
@@ -91,6 +95,12 @@ export default defineComponent({
 
     onErrorCaptured(() => {
       console.log("onErrorCaptured");
+    });
+
+    onMounted(() => {
+      document.getElementById("ul")?.addEventListener("click", (e) => {
+        console.log(e.target, e.currentTarget);
+      });
     });
 
     return {
